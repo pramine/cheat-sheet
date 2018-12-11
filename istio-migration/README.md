@@ -118,6 +118,13 @@ spec:
     protocol: HTTP
 ```
 
+## Notes about VirtualService and SNI
+
+We need a VirtualService (not only a ServiceEntry) In order to propagate SNI (several SSL certficats for the same IP but with the same host names)
+We can explain this when the pod should communicate with S3, for example.
+The service will contact the host s3.amazon... while it redirect to a CNAME that link really to the region 'eu-central-1' domain name
+
+
 ## Tools
 
 `$ istioctl experimental convert-ingress`
