@@ -6,4 +6,4 @@
 
 ## Delete all non-running pods
 
-`$ kubectl delete po $(kubectl get po | grep -v Running | awk '{print $1}') | grep -v NAME`
+`$ kubectl delete po $(kubectl get po --no-headers | grep -v Running | awk '{print $1}')`
