@@ -8,6 +8,10 @@
 
 `$ kubectl delete po $(kubectl get po --no-headers | grep -v Running | awk '{print $1}')`
 
+or more natively:
+
+`$ kubectl delete $(kubectl get pod --no-headers --field-selector=status.phase!=Running -o name )`
+
 ## Run a shell in a new pod 
 
 Useful in order to examine the kubernetes environment from the inside:
