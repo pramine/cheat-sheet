@@ -20,4 +20,7 @@ Useful in order to examine the kubernetes environment from the inside:
 
 ## Know Istio version
 
-`kubectl get po istio-pilot-xxx-xxx -n istio-system --template='{{(index (index .spec.containers 0).image)}}{{"\n"}}' | awk -F ":" '{ print $2 }'`
+```
+export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' -n istio-system | grep pilot)
+kubectl get po $POD_NAME -n istio-system --template='{{(index (index .spec.containers 0).image)}}{{"\n"}}' | awk -F ":" '{ print $2 }'
+```
