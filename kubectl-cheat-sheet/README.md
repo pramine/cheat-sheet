@@ -17,3 +17,7 @@ or more natively:
 Useful in order to examine the kubernetes environment from the inside:
 
 `alias kshell='kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm -- sh'`
+
+## Know Istio version
+
+`kubectl get po istio-pilot-xxx-xxx -n istio-system --template='{{(index (index .spec.containers 0).image)}}{{"\n"}}' | awk -F ":" '{ print $2 }'`
