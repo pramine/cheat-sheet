@@ -20,7 +20,7 @@ Useful in order to examine the kubernetes environment from the inside:
 
 ## Delete pod stucked in Terminating status
 
-`$ kubectl delete po --force --grace-period 0`
+`$ kubectl delete po PODNAME --force --grace-period 0`
 
 ## Know Istio version
 
