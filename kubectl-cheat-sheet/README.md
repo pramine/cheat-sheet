@@ -22,6 +22,10 @@ Useful in order to examine the kubernetes environment from the inside:
 
 `$ kubectl delete po PODNAME --force --grace-period 0`
 
+## Retrieve istio ingress (load balancer) hostname
+
+`$ kubectl get svc istio-ingressgateway -n istio-system -o json | jq .status.loadBalancer.ingress[0]`
+
 ## Know Istio version
 
 ```
