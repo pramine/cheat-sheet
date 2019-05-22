@@ -2,9 +2,22 @@
 
 * Scale Istio Pilot
 
-`$ kubectl edit hpa istio-pilot`
+`$ kubectl edit hpa istio-pilot -n istio-system`
 
-change threshold (95 to 80 for example) in order to scale in the memory
+change threshold (95 to 80 for example) in order to scale in the memory.
+
+Example:
+
+```
+spec:
+  maxReplicas: 5
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1beta1
+    kind: Deployment
+    name: istio-pilot
+  targetCPUUtilizationPercentage: 80
+```
 
 * I have deployment but my pods can't be scheduled, why?
 
