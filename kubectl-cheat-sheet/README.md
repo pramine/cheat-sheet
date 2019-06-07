@@ -10,7 +10,7 @@
 
 or more natively:
 
-`$ kubectl delete po $(kubectl get pod --no-headers --field-selector=status.phase!=Running -o name )`
+`$ kubectl delete po $(kubectl get pod --no-headers --field-selector=status.phase!=Running )`
 
 ## Run a shell in a new pod 
 
