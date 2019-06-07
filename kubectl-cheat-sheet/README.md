@@ -35,6 +35,8 @@ $ kubectl get po $POD_NAME -n istio-system --template='{{(index (index .spec.con
 
 ## Get EC2 instance ID given a kubernetes node ID 
 
-```kubectl get node ip-10-80-103-53.eu-central-1.compute.internal -o yaml | grep providerID```
+`kubectl get node ip-10-80-103-53.eu-central-1.compute.internal -o yaml | grep providerID`
+
 And then:
-```aws ec2 terminate-instances --instance-ids ...```
+
+`aws ec2 terminate-instances --instance-ids ...`
