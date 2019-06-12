@@ -80,3 +80,26 @@ presto-worker-68f64f9bb4-pnvdj        1/1     Running             0          7m3
 ```
 
 Great!
+
+* Fix a ServiceEntry for Istio 1.0.*
+
+In Istio < 1.1 there are several issues with ServiceEntry.
+If you want to add wildcard in host, the trick is to use "resolution: NONE" instead of DNS.
+Another bug exists, the last host is not taken in account instead of you use NONE for resolution, too.
+
+```
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: scraly-api
+spec:
+  hosts:
+  - scraly.api.com
+  - "*.s3.amazonaws.com"
+  location: MESH_EXTERNAL
+  ports:
+  - name: https
+    number: 443
+    protocol: TLS
+  resolution: NONE
+```
