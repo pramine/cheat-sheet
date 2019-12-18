@@ -40,3 +40,18 @@ $ kubectl get po $POD_NAME -n istio-system --template='{{(index (index .spec.con
 And then:
 
 `aws ec2 terminate-instances --instance-ids ...`
+
+## Change cronjob scheduling
+
+```
+$ kubectl get cronjob
+NAME                   SCHEDULE        SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+toto                    0 5 */1 * *     False     0        3h53m           22d
+
+$ kubectl patch cronjob toto -p '{"spec":{"schedule": "0 */1 */1 * *"}}'
+cronjob.batch/toto patched
+
+$ kubectl get cronjob
+NAME                   SCHEDULE        SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+toto   0 */1 */1 * *   False     1        55m             22d
+```
