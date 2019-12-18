@@ -55,3 +55,7 @@ $ kubectl get cronjob
 NAME                   SCHEDULE        SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 toto   0 */1 */1 * *   False     1        55m             22d
 ```
+
+## Launch a job from an existing cronjob
+
+`$ kubectl create job --from=cronjob/existing-cronjob my-job`
